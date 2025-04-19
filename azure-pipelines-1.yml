@@ -1,0 +1,22 @@
+resources:
+  repositories:
+    - repository: githubRepo
+      type: github
+      name: Thiru799/ravilogin
+      ref: refs/heads/main
+      endpoint: github.com_Thiru799
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: python
+  jobs:
+  - job: run_python
+    steps:
+    - checkout: githubRepo
+    - script: python projects/demo/python.py
+      displayName: 'Run Python script'
