@@ -1,20 +1,22 @@
+resources:
+  repositories:
+    - repository: githubRepo
+      type: github
+      name: Thiru799/ravilogin
+      ref: refs/heads/main
+      endpoint: github.com_Thiru799
+
 trigger:
 - main
 
+pool:
+  vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: python
-    displayName: python setup
-    jobs:
-      - job: python
-        displayName: download and create env for python 
-        pool: 
-          vmImage: 'ubuntu-latest'
-        steps: 
-        - checkout: self
-        - task: AzureCLI@2
-          inputs:
-            azureSubscription: "testscforpractice"
-            scriptType: 'bash'
-            scriptLocation: scriptPath
-            scriptPath: projects/demo/python.py
+- stage: python
+  jobs:
+  - job: run_python
+    steps:
+    - checkout: githubRepo
+    - script: python projects/demo/python.py
+      displayName: 'Run Python script'
