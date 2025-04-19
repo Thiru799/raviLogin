@@ -14,7 +14,7 @@ stages:
         - checkout: self
         - task: AzureCLI@2
           inputs:
-            azureSubscription: "github.com_Thiru799"
+            azureSubscription: "testscfornewrepo"
             scriptType: 'bash'
             scriptLocation: scriptPath
             scriptPath: projects/demo/python.py
