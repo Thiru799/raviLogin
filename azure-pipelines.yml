@@ -13,7 +13,7 @@ stages:
         - checkout: self
         - task: AzureCLI@2
           inputs:
-            azureSubscription: "azure service connection name"
+            azureSubscription: "testscforpractice"
             scriptType: 'bash'
             scriptLocation: scriptPath
             scriptPath: projects/demo/python.py
