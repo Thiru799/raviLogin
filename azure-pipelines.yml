@@ -8,12 +8,13 @@ stages:
     jobs:
       - job: python
         displayName: download and create env for python 
-        pool: ubuntu-latest
+        pool: 
+          vmImage: 'ubuntu-latest'
         steps: 
         - checkout: self
         - task: AzureCLI@2
           inputs:
-            azureSubscription: "testrcforgithubrepo"
+            azureSubscription: "testscforpractice"
             scriptType: 'bash'
             scriptLocation: scriptPath
             scriptPath: projects/demo/python.py
