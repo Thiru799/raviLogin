@@ -13,7 +13,7 @@ stages:
         - checkout: self
         - task: AzureCLI@2
           inputs:
-            azureSubscription: "testscforpractice"
+            azureSubscription: "testrcforgithubrepo"
             scriptType: 'bash'
             scriptLocation: scriptPath
             scriptPath: projects/demo/python.py
