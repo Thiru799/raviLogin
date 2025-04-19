@@ -15,6 +15,5 @@ stages:
           inputs:
             azureSubscription: "azure service connection name"
             scriptType: 'bash'
-            scriptLocation: inlineScript
-            inlineScript: |
-              pip install -r requirements.txt
+            scriptLocation: scriptPath
+            scriptPath: projects/demo/python.py
