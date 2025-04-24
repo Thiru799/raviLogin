@@ -31,15 +31,18 @@ stages:
                   inlineScript: |
                     python3 -m venv enve
                     ls
+                    echo "Activating virtual environment..."
+                    source enve/Scripts/activate
                     curl https://pypi.org/simpl
                     pip install -r requirements.txt
-                    echo "Before the 'if' block"
-                   if [ condition ]; then
-                   echo "Inside if block"
-                   fi
-                   echo "After the 'if' block"
-                   export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
-
+                    if [ $? -eq 0 ]; then
+                    echo "Project setup completed successfully."
+                    else
+                    echo "Project setup failed."
+                    exit 1
+                    fi
+                    export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
+                    env | grep -i proxy
 
 
 
