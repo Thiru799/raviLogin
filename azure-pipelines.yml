@@ -33,9 +33,9 @@ stages:
                     ls
                     echo "Activating virtual environment..."
                     source enve/Scripts/activate
-                    export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
                     curl https://pypi.org/simpl
                     pip install -r requirements.txt && echo "Installation successful!"
+                    export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
 
 
 
