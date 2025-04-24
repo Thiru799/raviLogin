@@ -9,12 +9,40 @@ stages:
       - job: python
         displayName: download and create env for python 
         pool: 
-          vmImage: 'ubuntu-latest'
+          vmImage: 'windows-latest'
         steps: 
-        - checkout: self
         - task: AzureCLI@2
           inputs:
             azureSubscription: "testscfornewrepo"
             scriptType: 'bash'
-            scriptLocation: scriptPath
-            scriptPath: projects/demo/python.py
+            scriptLocation: inlineScript
+            inlineScript: |
+              git clone -b master https://github.com/Thiru799/raviLogin.git temp_project
+              ls
+              mkdir -p /d/Projects/demo 
+              cp -r temp_project/* /d/Projects/demo
+              ls /d/Projects/demo/
+
+              - task: AzureCLI@2
+                inputs:
+                  azureSubscription: 'testscfornewrepo'
+                  scriptType: 'bash'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    python3 -m venv enve
+                    ls
+                    source enve/Scripts/activate
+                    export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
+                    pip install -r requirements.txt
+                    if [ $? -eq 0 ]; then
+                         echo "Project setup completed successfully."
+                    else
+                         echo "Project setup failed."
+                         exit 1
+                    f
+
+
+
+
+
+            
