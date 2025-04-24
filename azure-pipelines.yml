@@ -35,12 +35,11 @@ stages:
                     source enve/Scripts/activate
                     curl https://pypi.org/simpl
                     pip install -r requirements.txt
-                    if [ $? -eq 0 ]; then
-                    echo "Project setup completed successfully."
-                    else
-                    echo "Project setup failed."
-                    exit 1
+                    echo "Before the 'if' block"
+                    if [ condition ]; then
+                    echo "Inside if block"
                     fi
+                    echo "After the 'if' block"
                     export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
                     env | grep -i proxy
 
