@@ -31,8 +31,7 @@ stages:
                   inlineScript: |
                     python3 -m venv enve
                     ls
-                    source enve/Scripts/activate
-                    curl -v -x http://username:password@proxy.its.hpecorp.net:8080
+                    curl https://pypi.org/simpl
                     pip install -r requirements.txt
                     if [ $? -eq 0 ]; then
                          echo "Project setup completed successfully."
