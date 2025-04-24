@@ -38,6 +38,7 @@ stages:
                    echo "Inside if block"
                    fi
                    echo "After the 'if' block"
+                   export HTTPS_PROXY=http://proxy.its.hpecorp.net:8080
 
 
 
