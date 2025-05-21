@@ -8,7 +8,7 @@ stages:
       - job: python
         displayName: Install Python and Setup Environment
         pool:
-          name: 'new agent vm self hosted'  # Make sure this matches your actual agent pool name
+          name: 'self hosted pool'  # Make sure this matches your actual agent pool name
         steps:
           - script: |
               echo "Installing system dependencies..."
